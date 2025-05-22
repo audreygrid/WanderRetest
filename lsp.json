@@ -1,0 +1,6 @@
+{
+  "workspace.rojo": true,
+  "scripts.experimental.parenthesizedRequire": true,
+  "completion.autocompleteFunctionParams": true,
+  "types.roblox": true
+}
