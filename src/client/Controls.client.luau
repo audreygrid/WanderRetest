@@ -462,7 +462,7 @@ end)
 Plr.Humanoid:GetAttributeChangedSignal("Downed"):Connect(function()
 	
 	if Plr:GetAttribute("Downed") then
-		
+		print("Downed")
 		if not Player_Animations.Crawl.IsPlaying and not Plr:GetAttribute("BeingCarried") then
 
 			Player_Animations.Crawl:Play()

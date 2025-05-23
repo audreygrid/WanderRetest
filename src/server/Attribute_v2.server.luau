@@ -12,7 +12,7 @@ game.ReplicatedStorage.Events.Attribute.OnServerEvent:Connect(function(plr)
 		BeingCarried = false, Carrying = false,
 		Stamina = 100, Posture = 100
 	}
-	
+
 	task.delay(4, function()
 		
 		character:SetAttribute("CanCrit", true)
@@ -112,16 +112,28 @@ game.ReplicatedStorage.Events.Attribute.OnServerEvent:Connect(function(plr)
 				end
 			else
 				if name == "Punching" then
+					print(name)
 					rebindPunching()
 				elseif name == "Running" then
+					print(name)
 					_rebindAllCombat()
 				elseif name == "Blocking" then
+					print(name) 
 					rebindPunching() 
                     rebindAll()
 				elseif name == "Parrying" or name == "Stunned" or name == "Downed" or name == "BeingCarried" then
                     print(name)
+
+					character.Humanoid.JumpPower = 0 
+					if name  == "Downed" then
+						character.Humanoid.WalkSpeed = 3
+					else
+						character.Humanoid.WalkSpeed = 0 
+					end
+
 					rebindAll()
 				elseif name == "Carrying" then
+					print(name)
 					_rebindAllCombat()
 				end
 			end
