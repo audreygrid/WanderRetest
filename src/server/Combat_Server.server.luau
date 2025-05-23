@@ -37,11 +37,13 @@ local Sounds = {
 } 
 
 local function SendSound(Plr, sound)
-	local S = Instance.new("Sound")
-	S.Parent = Plr
-	S.SoundId = "rbxassetid://"..tostring(sound)
-	S.Playing = true
-	game.Debris:AddItem(S,1)
+	pcall(function()
+		local S = Instance.new("Sound")
+		S.Parent = Plr
+		S.SoundId = "rbxassetid://"..tostring(sound)
+		S.Playing = true
+		game.Debris:AddItem(S,1)
+	end)
 end
 
 

@@ -100,14 +100,23 @@ game.ReplicatedStorage.Events.Attribute.OnServerEvent:Connect(function(plr)
                 print("ITS FUCKING TRUE")
 				if name == "Punching" then
 					unbindPunching()
+					character:SetAttribute("Running", false)
 				elseif name == "Running" then
-					_unbindAllCombat()
+					_unbindBlocking()
 				elseif name == "Blocking" then
 					unbindPunching()
 				elseif name == "Parrying" or name == "Stunned" or name == "Downed" or name == "BeingCarried" then
                     print(name)
+					
+					character.Humanoid.JumpPower = 0 
+					if name  == "Downed" then
+						character.Humanoid.WalkSpeed = 3
+					else
+						character.Humanoid.WalkSpeed = 0 
+					end
 					unbindAll()
-				elseif name == "Carrying" then
+
+					elseif name == "Carrying" then
 					_unbindAllCombat()
 				end
 			else
@@ -116,7 +125,7 @@ game.ReplicatedStorage.Events.Attribute.OnServerEvent:Connect(function(plr)
 					rebindPunching()
 				elseif name == "Running" then
 					print(name)
-					_rebindAllCombat()
+					_unbindBlocking()
 				elseif name == "Blocking" then
 					print(name) 
 					rebindPunching() 
@@ -124,12 +133,8 @@ game.ReplicatedStorage.Events.Attribute.OnServerEvent:Connect(function(plr)
 				elseif name == "Parrying" or name == "Stunned" or name == "Downed" or name == "BeingCarried" then
                     print(name)
 
-					character.Humanoid.JumpPower = 0 
-					if name  == "Downed" then
-						character.Humanoid.WalkSpeed = 3
-					else
-						character.Humanoid.WalkSpeed = 0 
-					end
+					character.Humanoid.JumpPower = 60  
+					character.Humanoid.WalkSpeed = 15 
 
 					rebindAll()
 				elseif name == "Carrying" then
